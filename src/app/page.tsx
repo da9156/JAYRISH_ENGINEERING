@@ -31,8 +31,8 @@ export default function HomePage() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 19.10072,
-      longitude: 72.92985
+      latitude: businessInfo.coordinates.lat,
+      longitude: businessInfo.coordinates.lng
     },
     openingHoursSpecification: [
       {
