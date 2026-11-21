@@ -117,7 +117,7 @@ export default function ContactPage() {
               </div>
 
               {/* Verified Google Business Link */}
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+              {/* <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-bold text-slate-800">
                     Google Business Listing
@@ -135,7 +135,7 @@ export default function ContactPage() {
                   <span>View</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -161,7 +161,7 @@ export default function ContactPage() {
       </section>
 
       {/* Real-Time Google Maps Section in Box Format */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      {/* <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function ContactPage() {
             title="JAYRISH ENGINEERING Google Maps Location in Vikhroli East, Mumbai"
           />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
