@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Column 1: Brand & Identity */}
           <div className="space-y-4">
-            <div className="relative h-14 w-52 bg-white rounded-lg p-2">
+            <div className="relative h-16 w-40 bg-white rounded-lg p-2">
               <Image
                 src="/assets/logo/Complete logo.png"
                 alt="JAYRISH ENGINEERING"
@@ -165,7 +165,7 @@ export const Footer: React.FC = () => {
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowFullScreen={false}
+              allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="JAYRISH ENGINEERING Location in Vikhroli East, Mumbai"
@@ -181,10 +181,10 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} JAYRISH ENGINEERING. All rights reserved.
           </p>
           <p className="text-[11px] text-slate-500">
-            {businessInfo.legalName} • Vikhroli East, Mumbai
+            Developed by <a href="https://www.linkedin.com/in/darshan-kotkar-2a14701b4" target="_blank" rel="noopener noreferrer" className="text-brand-orange-light hover:text-white transition-colors">Darshan Kotkar</a>
           </p>
         </div>
       </div>
     </footer>
-  );
+  );  
 };
