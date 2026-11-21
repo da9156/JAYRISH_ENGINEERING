@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-navy: #1B3A5C;
+    --brand-navy-dark: #0F2439;
+    --brand-navy-deep: #0B1928;
+    --brand-orange: #E87A1E;
+    --brand-orange-gold: #F39C12;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: #1A1A2E;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #E87A1E;
+    color: #FFFFFF;
+  }
+}
+
+@layer utilities {
+  .text-gradient-orange {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-orange via-brand-orange-gold to-amber-500;
+  }
+
+  .text-gradient-navy {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-navy-dark to-brand-navy;
+  }
+
+  .industrial-grid {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(27, 58, 92, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(27, 58, 92, 0.05) 1px, transparent 1px);
+  }
+
+  .industrial-grid-dark {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
