@@ -175,7 +175,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Copyright & Disclaimer Bar */}
-      <div className="bg-black/40 border-t border-brand-navy/50 py-4 text-xs text-slate-400">
+      <div className="bg-black/40 border-t border-brand-navy/50 pt-4 pb-24 sm:pb-4 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} JAYRISH ENGINEERING. All rights reserved.
