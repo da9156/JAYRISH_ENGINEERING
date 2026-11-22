@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     apple: "/assets/logo/Standalone 3D gear and JE symbol logo.png"
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "-lU6hf4OkdnoVwgtAPChd-iHM21Aht6UDFb7os5O8t0"
   }
 };
 
