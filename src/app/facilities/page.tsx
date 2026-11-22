@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { JsonLd } from "@/components/common/JsonLd";
 import { getWhatsAppUrl } from "@/data/business";
 import {
   Settings,
@@ -16,12 +17,48 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Training Approach & Facilities",
+  title: "CNC & VMC Training Approach and Facilities | JAYRISH ENGINEERING",
   description:
-    "Explore the technical training areas, software suites, and instruction methodologies at JAYRISH ENGINEERING, Vikhroli East, Mumbai."
+    "Explore CNC and VMC machine operating concepts, programming fundamentals, CAD/CAM software and technical classroom training at JAYRISH ENGINEERING.",
+  alternates: {
+    canonical: "https://www.jayrishengineering.com/facilities"
+  },
+  openGraph: {
+    title: "CNC & VMC Training Approach and Facilities | JAYRISH ENGINEERING",
+    description:
+      "Explore CNC and VMC machine operating concepts, programming fundamentals, CAD/CAM software and technical classroom training at JAYRISH ENGINEERING.",
+    url: "https://www.jayrishengineering.com/facilities",
+    siteName: "JAYRISH ENGINEERING",
+    images: [
+      {
+        url: "/assets/logo/image copy.png",
+        width: 1200,
+        height: 630,
+        alt: "CNC & VMC Training Approach and Facilities - JAYRISH ENGINEERING Mumbai"
+      }
+    ]
+  }
 };
 
 export default function FacilitiesPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.jayrishengineering.com/"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Training Facilities",
+        item: "https://www.jayrishengineering.com/facilities"
+      }
+    ]
+  };
   const facilityAreas = [
     {
       title: "CNC Machine Operation Concepts",
@@ -103,7 +140,9 @@ export default function FacilitiesPage() {
   ];
 
   return (
-    <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
       {/* Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-brand-navy-deep text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl">
@@ -204,5 +243,6 @@ export default function FacilitiesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

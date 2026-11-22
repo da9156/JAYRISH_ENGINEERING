@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { businessInfo, getWhatsAppUrl } from "@/data/business";
+import { trackPhoneClick, trackWhatsAppClick } from "@/components/common/GoogleAnalytics";
 import { Phone, MessageCircle } from "lucide-react";
 
 export const MobileStickyBar: React.FC = () => {
@@ -24,6 +25,7 @@ export const MobileStickyBar: React.FC = () => {
       <div className="grid grid-cols-2 gap-2">
         <a
           href={`tel:${businessInfo.phoneFormatted.replace(/\s+/g, "")}`}
+          onClick={() => trackPhoneClick()}
           className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-brand-navy text-white text-xs font-bold shadow-sm active:scale-95 transition-transform"
         >
           <Phone className="w-3.5 h-3.5 text-brand-orange-light" />
@@ -32,6 +34,7 @@ export const MobileStickyBar: React.FC = () => {
 
         <a
           href={getWhatsAppUrl()}
+          onClick={() => trackWhatsAppClick()}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-sm active:scale-95 transition-transform"

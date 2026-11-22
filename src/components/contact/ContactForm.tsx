@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { coursesData } from "@/data/courses";
 import { businessInfo } from "@/data/business";
+import { trackEnquirySubmit } from "@/components/common/GoogleAnalytics";
 import { CheckCircle2, AlertCircle, Send, Loader2, MessageCircle } from "lucide-react";
 
 export const ContactForm: React.FC = () => {
@@ -66,6 +67,9 @@ export const ContactForm: React.FC = () => {
 
     setIsSubmitting(false);
     setSubmitted(true);
+
+    // Track conversion event in Google Analytics
+    trackEnquirySubmit(courseTitle, formData.qualification);
 
     // Open WhatsApp in new tab
     if (typeof window !== "undefined") {

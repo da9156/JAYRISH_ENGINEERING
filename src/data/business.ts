@@ -7,7 +7,8 @@ export interface BusinessInfo {
   phone: string;
   phoneFormatted: string;
   whatsappNumber: string;
-  // email: string;
+  websiteUrl: string;
+  email: string;
   address: {
     line1: string;
     line2: string;
@@ -40,11 +41,12 @@ export const businessInfo: BusinessInfo = {
   legalName: "CNC & VMC Operating & Programming Classes by JAYRISH ENGINEERING",
   tagline: "From Engineering Knowledge to Industrial Skills",
   supportingTagline: "Professional CNC & VMC Operating and Programming Training",
-  altTagline: "Learn. Practice. Excel.",
+  altTagline: "Learn • Practice • Excel",
   phone: "+91 82374 97354",
   phoneFormatted: "+91 82374 97354",
   whatsappNumber: "918237497354",
-  // email: "info@jayrishengineering.com",
+  websiteUrl: "https://www.jayrishengineering.com/",
+  email: "info@jayrishengineering.com",
   address: {
     line1: "06 BLDG, FLAT NO. 64 / 6, Station Rd",
     line2: "SIDE COLONY, Pirojshanagar",

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { coursesData } from "@/data/courses";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://jayrishengineering.com";
+  const baseUrl = "https://www.jayrishengineering.com";
 
   const staticPages = [
     "",

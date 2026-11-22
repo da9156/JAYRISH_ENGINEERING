@@ -2,18 +2,58 @@ import type { Metadata } from "next";
 import { coursesData } from "@/data/courses";
 import { CourseCard } from "@/components/common/CourseCard";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { JsonLd } from "@/components/common/JsonLd";
 import { getWhatsAppUrl } from "@/data/business";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Complete Technical Courses",
+  title: "CNC, VMC & CAD/CAM Courses in Mumbai | JAYRISH ENGINEERING",
   description:
-    "Explore 11 professional training courses in CNC operating, VMC programming, Mastercam, AutoCAD, Siemens CNC, Delcam, and machine setup at JAYRISH ENGINEERING, Mumbai."
+    "Explore 11 technical training programs at JAYRISH ENGINEERING, including CNC, VMC, Siemens CNC, Mastercam, Delcam and AutoCAD in Mumbai.",
+  alternates: {
+    canonical: "https://www.jayrishengineering.com/courses"
+  },
+  openGraph: {
+    title: "CNC, VMC & CAD/CAM Courses in Mumbai | JAYRISH ENGINEERING",
+    description:
+      "Explore 11 technical training programs at JAYRISH ENGINEERING, including CNC, VMC, Siemens CNC, Mastercam, Delcam and AutoCAD in Mumbai.",
+    url: "https://www.jayrishengineering.com/courses",
+    siteName: "JAYRISH ENGINEERING",
+    images: [
+      {
+        url: "/assets/logo/image copy.png",
+        width: 1200,
+        height: 630,
+        alt: "CNC, VMC and CAD/CAM Training Courses - JAYRISH ENGINEERING Mumbai"
+      }
+    ]
+  }
 };
 
 export default function CoursesPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.jayrishengineering.com/"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Courses",
+        item: "https://www.jayrishengineering.com/courses"
+      }
+    ]
+  };
+
   return (
-    <div className="space-y-16 sm:space-y-20 py-10 sm:py-16">
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="space-y-16 sm:space-y-20 py-10 sm:py-16">
       {/* Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-brand-navy-deep text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl">
@@ -84,5 +124,6 @@ export default function CoursesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

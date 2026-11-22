@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { businessInfo, getWhatsAppUrl } from "@/data/business";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { JsonLd } from "@/components/common/JsonLd";
 import {
   ShieldCheck,
   Target,
@@ -16,14 +17,53 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About JAYRISH ENGINEERING | CNC & VMC Training Mumbai",
   description:
-    "Learn about JAYRISH ENGINEERING, a dedicated technical training institute in Vikhroli East, Mumbai, specialising in CNC, VMC, and CAD/CAM engineering education."
+    "Learn about JAYRISH ENGINEERING, a technical training institute in Vikhroli East, Mumbai, offering CNC, VMC and CAD/CAM education.",
+  alternates: {
+    canonical: "https://www.jayrishengineering.com/about"
+  },
+  openGraph: {
+    title: "About JAYRISH ENGINEERING | CNC & VMC Training Mumbai",
+    description:
+      "Learn about JAYRISH ENGINEERING, a technical training institute in Vikhroli East, Mumbai, offering CNC, VMC and CAD/CAM education.",
+    url: "https://www.jayrishengineering.com/about",
+    siteName: "JAYRISH ENGINEERING",
+    images: [
+      {
+        url: "/assets/logo/image copy.png",
+        width: 1200,
+        height: 630,
+        alt: "About JAYRISH ENGINEERING - Technical Training Institute in Mumbai"
+      }
+    ]
+  }
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.jayrishengineering.com/"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About Us",
+        item: "https://www.jayrishengineering.com/about"
+      }
+    ]
+  };
+
   return (
-    <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="space-y-16 sm:space-y-24 py-10 sm:py-16">
       {/* Page Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-brand-navy-deep text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl">
@@ -184,5 +224,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

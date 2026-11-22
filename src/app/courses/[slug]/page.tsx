@@ -42,18 +42,26 @@ export async function generateMetadata({
     };
   }
 
+  const pageTitle = course.seoTitle || `${course.title} in Mumbai | JAYRISH ENGINEERING`;
+  const pageDescription = course.seoDescription || course.shortDescription;
+  const pageCanonical = `https://www.jayrishengineering.com/courses/${slug}`;
+
   return {
-    title: `${course.title} in Mumbai`,
-    description: course.shortDescription,
+    title: pageTitle,
+    description: pageDescription,
+    alternates: {
+      canonical: pageCanonical
+    },
     openGraph: {
-      title: `${course.title} | JAYRISH ENGINEERING`,
-      description: course.shortDescription,
+      title: pageTitle,
+      description: pageDescription,
+      url: pageCanonical,
       images: [
         {
           url: course.image,
           width: 1200,
           height: 630,
-          alt: course.title
+          alt: `${course.title} - JAYRISH ENGINEERING Mumbai`
         }
       ]
     }
@@ -75,24 +83,53 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
     course.relatedSlugs.includes(c.slug)
   );
 
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.jayrishengineering.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Courses",
+        item: "https://www.jayrishengineering.com/courses"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: course.title,
+        item: `https://www.jayrishengineering.com/courses/${course.slug}`
+      }
+    ]
+  };
+
   // Schema.org Course structured data
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
     name: course.title,
     description: course.fullDescription,
+    url: `https://www.jayrishengineering.com/courses/${course.slug}`,
     provider: {
       "@type": "EducationalOrganization",
       name: businessInfo.legalName,
-      sameAs: "https://jayrishengineering.com"
+      sameAs: "https://www.jayrishengineering.com",
+      url: "https://www.jayrishengineering.com"
     },
-    educationalCredentialAwarded: course.certification,
+    educationalCredentialAwarded: "Course Completion Certificate",
     courseMode: "In-person",
     timeToComplete: course.duration
   };
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={courseSchema} />
 
       <div className="space-y-12 sm:space-y-16 py-8 sm:py-12">

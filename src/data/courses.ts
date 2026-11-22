@@ -22,6 +22,8 @@ export interface Course {
   featured?: boolean;
   disclaimer?: string;
   relatedSlugs: string[];
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const coursesData: Course[] = [
@@ -744,8 +746,65 @@ export const coursesData: Course[] = [
   }
 ];
 
+export const courseSeoMap: Record<string, { title: string; description: string }> = {
+  "cnc-programming": {
+    title: "CNC Programming Course in Mumbai | JAYRISH ENGINEERING",
+    description: "Learn G-code, M-code, canned cycles, and lathe programming in Mumbai at JAYRISH ENGINEERING, Vikhroli East. Offline classroom training for engineers and technicians."
+  },
+  "cnc-machine-operating": {
+    title: "CNC Machine Operator Training in Mumbai | JAYRISH ENGINEERING",
+    description: "Join CNC Machine Operating classes at JAYRISH ENGINEERING in Vikhroli East, Mumbai. Master control panels, workpiece setup, tool offsets, and industrial safety."
+  },
+  "vmc-programming": {
+    title: "VMC Programming Course in Mumbai | JAYRISH ENGINEERING",
+    description: "Master 3-axis VMC milling programming in Mumbai at JAYRISH ENGINEERING. Learn manual G-code, canned cycles, pocketing, and contouring in Vikhroli East."
+  },
+  "vmc-machine-operating": {
+    title: "VMC Machine Operator Course in Mumbai | JAYRISH ENGINEERING",
+    description: "Hands-on VMC machine operator training at JAYRISH ENGINEERING, Vikhroli East, Mumbai. Learn workpiece clamping, coordinate setting, tool presetting, and operations."
+  },
+  "mastercam-2d-3d": {
+    title: "Mastercam Training in Mumbai | JAYRISH ENGINEERING",
+    description: "Comprehensive Mastercam 2D & 3D CAD/CAM training in Mumbai at JAYRISH ENGINEERING. Learn wireframe modeling, toolpath generation, and post-processing in Vikhroli East."
+  },
+  "autocad": {
+    title: "AutoCAD Mechanical Course in Mumbai | JAYRISH ENGINEERING",
+    description: "AutoCAD 2D mechanical drafting training at JAYRISH ENGINEERING in Vikhroli East, Mumbai. Learn GD&T, engineering drawings, and industrial drawing standards."
+  },
+  "delcam-programming": {
+    title: "Delcam PowerMill Training in Mumbai | JAYRISH ENGINEERING",
+    description: "Advanced Delcam / PowerMill CAM programming classes at JAYRISH ENGINEERING in Vikhroli East, Mumbai. Learn 3D roughing, finishing, and NC code generation."
+  },
+  "siemens-cnc-programming": {
+    title: "Siemens CNC Programming in Mumbai | JAYRISH ENGINEERING",
+    description: "Learn Siemens Sinumerik 828D / 840D controller programming at JAYRISH ENGINEERING, Vikhroli East, Mumbai. Master ShopMill, ShopTurn, and Siemens canned cycles."
+  },
+  "cnc-setup-tooling": {
+    title: "CNC Setup & Tooling Training in Mumbai | JAYRISH ENGINEERING",
+    description: "Practical CNC & VMC machine setup and tooling training at JAYRISH ENGINEERING in Vikhroli East, Mumbai. Learn tool presetting, dial gauge alignment, and clamping."
+  },
+  "practical-cnc-vmc": {
+    title: "Practical CNC and VMC Training in Mumbai | JAYRISH ENGINEERING",
+    description: "Comprehensive practical CNC and VMC training at JAYRISH ENGINEERING, Vikhroli East, Mumbai. Learn workflow integration, simulation proofing, and quality inspection."
+  },
+  "computer-training": {
+    title: "Computer Training for Engineers in Mumbai | JAYRISH ENGINEERING",
+    description: "Basic and technical computer training classes at JAYRISH ENGINEERING in Vikhroli East, Mumbai. Learn digital workflows, technical spreadsheets, and documentation."
+  }
+};
+
 export function getCourseBySlug(slug: string): Course | undefined {
-  return coursesData.find((course) => course.slug === slug);
+  const course = coursesData.find((course) => course.slug === slug);
+  if (!course) return undefined;
+  const seo = courseSeoMap[slug];
+  if (seo) {
+    return {
+      ...course,
+      seoTitle: seo.title,
+      seoDescription: seo.description
+    };
+  }
+  return course;
 }
 
 export function getFeaturedCourses(): Course[] {

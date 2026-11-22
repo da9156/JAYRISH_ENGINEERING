@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"]
     },
-    sitemap: "https://jayrishengineering.com/sitemap.xml"
+    sitemap: "https://www.jayrishengineering.com/sitemap.xml"
   };
 }

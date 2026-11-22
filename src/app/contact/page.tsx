@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { businessInfo, getWhatsAppUrl } from "@/data/business";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { JsonLd } from "@/components/common/JsonLd";
 import {
   MapPin,
   Phone,
@@ -12,14 +13,52 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Admissions",
+  title: "Contact JAYRISH ENGINEERING | CNC & VMC Classes in Vikhroli Mumbai",
   description:
-    "Get in touch with JAYRISH ENGINEERING in Vikhroli East, Mumbai. Inquire about CNC & VMC training courses, syllabus, fee details, and available batches."
+    "Contact JAYRISH ENGINEERING in Vikhroli East, Mumbai for CNC, VMC, Mastercam, AutoCAD training, course details and admissions.",
+  alternates: {
+    canonical: "https://www.jayrishengineering.com/contact"
+  },
+  openGraph: {
+    title: "Contact JAYRISH ENGINEERING | CNC & VMC Classes in Vikhroli Mumbai",
+    description:
+      "Contact JAYRISH ENGINEERING in Vikhroli East, Mumbai for CNC, VMC, Mastercam, AutoCAD training, course details and admissions.",
+    url: "https://www.jayrishengineering.com/contact",
+    images: [
+      {
+        url: "/assets/courses/CNC Programming Training.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact JAYRISH ENGINEERING Vikhroli East Mumbai"
+      }
+    ]
+  }
 };
 
 export default function ContactPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.jayrishengineering.com"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Contact Us",
+        item: "https://www.jayrishengineering.com/contact"
+      }
+    ]
+  };
+
   return (
-    <div className="space-y-16 sm:space-y-20 py-10 sm:py-16">
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="space-y-16 sm:space-y-20 py-10 sm:py-16">
       {/* Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-brand-navy-deep text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl">
@@ -198,5 +237,6 @@ export default function ContactPage() {
         </div>
       </section> */}
     </div>
+    </>
   );
 }

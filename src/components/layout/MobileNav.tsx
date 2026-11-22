@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { businessInfo, getWhatsAppUrl } from "@/data/business";
 import { navigationItems } from "@/data/navigation";
+import { trackPhoneClick, trackWhatsAppClick } from "@/components/common/GoogleAnalytics";
 import { X, Phone, MessageCircle, MapPin, ChevronRight, Clock } from "lucide-react";
 
 interface MobileNavProps {
@@ -123,6 +124,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
         <div className="p-4 border-t border-slate-100 bg-slate-50 space-y-2">
           <a
             href={getWhatsAppUrl()}
+            onClick={() => trackWhatsAppClick()}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-sm"
@@ -133,6 +135,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
 
           <a
             href={`tel:${businessInfo.phoneFormatted.replace(/\s+/g, "")}`}
+            onClick={() => trackPhoneClick()}
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-brand-navy bg-white border border-slate-200 hover:bg-slate-50 transition-colors shadow-sm"
           >
             <Phone className="w-4 h-4 text-brand-orange" />

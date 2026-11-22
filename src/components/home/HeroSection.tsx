@@ -19,7 +19,7 @@ export const HeroSection: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/courses/VMC Machine Operating Training.png"
-          alt="CNC and VMC Machining Center Workshop"
+          alt="CNC and VMC Machining Center Workshop - JAYRISH ENGINEERING Mumbai"
           fill
           priority
           className="object-cover object-center opacity-30 mix-blend-luminosity scale-105 transform motion-safe:animate-pulseSlow"
@@ -44,9 +44,10 @@ export const HeroSection: React.FC = () => {
             {/* Main Title & Subtitle */}
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
-                CNC & VMC Operating and <br className="hidden sm:inline" />
-                <span className="text-gradient-orange">Programming Training</span>{" "}
-                Institute
+                <span className="text-white block sm:inline">JAYRISH ENGINEERING</span>
+                <span className="block text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gradient-orange mt-2 sm:mt-3">
+                  CNC & VMC Operating & Programming Training Institute
+                </span>
               </h1>
               <p className="text-lg sm:text-2xl font-semibold text-slate-200">
                 Build Your Future in Modern Manufacturing and Engineering.
@@ -92,7 +93,7 @@ export const HeroSection: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 justify-center lg:justify-start">
                 <CheckCircle2 className="w-4 h-4 text-brand-orange shrink-0" />
-                <span>Certificate Awarded</span>
+                <span>Course Completion Certificate</span>
               </div>
               <div className="flex items-center gap-2 justify-center lg:justify-start">
                 <CheckCircle2 className="w-4 h-4 text-brand-orange shrink-0" />
@@ -114,7 +115,7 @@ export const HeroSection: React.FC = () => {
                   </span>
                 </div>
                 <span className="text-[11px] font-bold text-brand-orange-light bg-brand-orange/15 px-2.5 py-0.5 rounded-full">
-                  2024–2025 Batches
+                  New Batches Enrolling
                 </span>
               </div>
 
@@ -122,7 +123,7 @@ export const HeroSection: React.FC = () => {
                 <div className="relative h-44 w-full rounded-xl overflow-hidden border border-slate-700 bg-slate-900">
                   <Image
                     src="/assets/courses/CNC Programming Training.png"
-                    alt="CNC Controller Screen Simulation"
+                    alt="CNC Controller Screen Simulation and G-code Programming - JAYRISH ENGINEERING"
                     fill
                     className="object-cover"
                   />

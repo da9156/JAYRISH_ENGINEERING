@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { businessInfo, getWhatsAppUrl } from "@/data/business";
 import { navigationItems } from "@/data/navigation";
+import { trackPhoneClick, trackWhatsAppClick } from "@/components/common/GoogleAnalytics";
 import { MobileNav } from "./MobileNav";
 import { Phone, MessageCircle, Menu, ChevronDown, MapPin } from "lucide-react";
 
@@ -40,6 +41,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-6">
             <a
               href={`tel:${businessInfo.phoneFormatted.replace(/\s+/g, "")}`}
+              onClick={() => trackPhoneClick()}
               className="hover:text-white transition-colors flex items-center gap-1.5 font-medium"
             >
               <Phone className="w-3.5 h-3.5 text-brand-orange" />
@@ -143,6 +145,7 @@ export const Header: React.FC = () => {
             <div className="hidden sm:flex items-center gap-3">
               <a
                 href={`tel:${businessInfo.phoneFormatted.replace(/\s+/g, "")}`}
+                onClick={() => trackPhoneClick()}
                 className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold text-brand-navy bg-brand-navy/5 border border-brand-navy/20 hover:bg-brand-navy hover:text-white transition-all shadow-sm"
               >
                 <Phone className="w-3.5 h-3.5 text-brand-orange" />
@@ -151,6 +154,7 @@ export const Header: React.FC = () => {
 
               <a
                 href={getWhatsAppUrl()}
+                onClick={() => trackWhatsAppClick()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-sm shadow-emerald-600/20"

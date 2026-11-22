@@ -11,15 +11,24 @@ import { businessInfo } from "@/data/business";
 import { faqsData } from "@/data/faqs";
 
 export default function HomePage() {
+  // Schema.org WebSite structured data (Brand & Search discovery)
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "JAYRISH ENGINEERING",
+    alternateName: ["Jayrish Engineering", "jayrish engineering", "JAYRISH ENGINEERING Mumbai"],
+    url: "https://www.jayrishengineering.com/"
+  };
+
   // Schema.org LocalBusiness / EducationalOrganization structured data
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     name: businessInfo.legalName,
-    alternateName: businessInfo.name,
+    alternateName: ["JAYRISH ENGINEERING", "Jayrish Engineering", "jayrish engineering"],
     description:
       "Technical training institute in Vikhroli East, Mumbai specialising in CNC and VMC machine operating, manual programming, and CAD/CAM software.",
-    url: "https://jayrishengineering.com",
+    url: "https://www.jayrishengineering.com/",
     telephone: businessInfo.phone,
     address: {
       "@type": "PostalAddress",
@@ -50,7 +59,10 @@ export default function HomePage() {
         closes: "21:30"
       }
     ],
-    sameAs: [businessInfo.googleBusinessProfileUrl]
+    sameAs: [
+      businessInfo.googleBusinessProfileUrl,
+      businessInfo.googlePlaceUrl
+    ]
   };
 
   // Schema.org FAQPage structured data
@@ -69,6 +81,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={websiteSchema} />
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={faqSchema} />
       <HeroSection />
