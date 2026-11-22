@@ -1,44 +1,64 @@
-"use client";
-
 import React from "react";
-import Script from "next/script";
 
-// GA Measurement ID from environment variable or fallback
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
+// GA Measurement ID or GTM ID from environment variable
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const GoogleAnalytics: React.FC = () => {
-  if (!GA_MEASUREMENT_ID) {
+  if (!GA_ID) {
     return null;
   }
 
+  const isGTM = GA_ID.startsWith("GTM-");
+  const scriptSrc = isGTM
+    ? `https://www.googletagmanager.com/gtm.js?id=${GA_ID}`
+    : `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+
   return (
     <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
+      <script async src={scriptSrc} />
+      <script
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
+            ${
+              isGTM
+                ? `window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });`
+                : ""
+            }
+            gtag('config', '${GA_ID}', {
               page_path: window.location.pathname,
             });
           `
         }}
       />
+      {isGTM && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GA_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+      )}
     </>
   );
 };
 
 // Event tracking helper functions for conversion actions
 export function trackEvent(action: string, params: Record<string, any> = {}) {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("event", action, params);
+  if (typeof window !== "undefined") {
+    if ((window as any).gtag) {
+      (window as any).gtag("event", action, params);
+    }
+    if ((window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: action,
+        ...params
+      });
+    }
   }
 }
 
